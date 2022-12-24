@@ -31,6 +31,13 @@ export const loginUser = (credential, password) => async dispatch => {
   }
 };
 
+export const restoreUser = () => async dispatch => {
+  const res = await csrfFetch('/api/session');
+  const data = await res.json();
+  dispatch(setUser(data.user));
+  return res;
+};
+
 const sessionReducer = (state = { user: null }, action) => {
   const newState = { ...state };
   switch (action.type) {
