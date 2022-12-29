@@ -8,6 +8,7 @@ import * as sessionActions from './store/session';
 import SignupFormPage from './components/SignupFormPage';
 import Navigation from './components/Navigation';
 import SpotIndex from './components/spots/SpotIndex';
+import SpotShow from './components/spots/SpotShow';
 
 function App() {
   const dispatch = useDispatch();
@@ -27,6 +28,10 @@ function App() {
 
           <Route exact path='/'>
             <SpotIndex />
+          </Route>
+
+          <Route path='/spots/:spotId'>
+            <SpotShow />
           </Route>
         </Switch>
       )}

@@ -16,6 +16,13 @@ export const fetchSpots = () => async dispatch => {
   return response;
 };
 
+export const fetchSpot = spotId => async dispatch => {
+  const response = await csrfFetch(`/api/spots/${spotId}`);
+  const data = await response.json();
+  dispatch(setSpots([data]));
+  return response;
+};
+
 const spotsReducer = (state = {}, action) => {
   let newState = { ...state };
   switch (action.type) {
