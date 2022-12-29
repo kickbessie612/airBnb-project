@@ -11,30 +11,42 @@ export const setSpots = spots => {
 
 // GET all spots
 export const fetchSpots = () => async dispatch => {
-  const response = await csrfFetch('/api/spots');
-  const data = await response.json();
-  dispatch(setSpots(data));
-  return response;
+  const res = await csrfFetch('/api/spots');
+  const spots = await res.json();
+  dispatch(setSpots(spots));
+  return res;
 };
 
 // GET a spot by id
 export const fetchSpot = spotId => async dispatch => {
-  const response = await csrfFetch(`/api/spots/${spotId}`);
-  const data = await response.json();
+  const res = await csrfFetch(`/api/spots/${spotId}`);
+  const spot = await res.json();
+  dispatch(setSpots([spot]));
+  return res;
+};
+
+// POST create a spot
+export const createSpot = spot => async dispatch => {
+  const res = await csrfFetch('/api/spots', {
+    method: 'POST',
+    body: JSON.stringify(spot)
+  });
+
+  const data = await res.json();
   dispatch(setSpots([data]));
-  return response;
+  return data;
 };
 
 // PUT edit a spot
 export const updateSpot = spotId => async dispatch => {
-  const response = await csrfFetch(`/api/spots/${spotId}`, {
+  const res = await csrfFetch(`/api/spots/${spotId}`, {
     method: 'PUT',
     body: JSON.stringify(spotId)
   });
 
-  const data = await response.json();
+  const data = await res.json();
   dispatch(setSpots([data]));
-  return response;
+  return res;
 };
 
 const spotsReducer = (state = {}, action) => {
