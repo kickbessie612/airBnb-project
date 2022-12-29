@@ -14,6 +14,10 @@ const SpotShow = () => {
 
   const spot = spotsObj[spotId];
 
+  const editSpot = e => {
+    e.preventDefault();
+  };
+
   if (!spot) {
     return null;
   }
@@ -25,6 +29,11 @@ const SpotShow = () => {
       <div>
         {spot.city}, {spot.state}, {spot.country}
       </div>
+      <button
+      // onClick={editSpot}
+      >
+        Edit
+      </button>
     </>
   );
 };

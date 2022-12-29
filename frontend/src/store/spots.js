@@ -9,6 +9,7 @@ export const setSpots = spots => {
   };
 };
 
+// GET all spots
 export const fetchSpots = () => async dispatch => {
   const response = await csrfFetch('/api/spots');
   const data = await response.json();
@@ -16,8 +17,21 @@ export const fetchSpots = () => async dispatch => {
   return response;
 };
 
+// GET a spot by id
 export const fetchSpot = spotId => async dispatch => {
   const response = await csrfFetch(`/api/spots/${spotId}`);
+  const data = await response.json();
+  dispatch(setSpots([data]));
+  return response;
+};
+
+// PUT edit a spot
+export const updateSpot = spotId => async dispatch => {
+  const response = await csrfFetch(`/api/spots/${spotId}`, {
+    method: 'PUT',
+    body: JSON.stringify(spotId)
+  });
+
   const data = await response.json();
   dispatch(setSpots([data]));
   return response;
