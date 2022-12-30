@@ -28,6 +28,7 @@ function Navigation({ isLoaded }) {
           Home
         </NavLink>
         {isLoaded && sessionLinks}
+        <NavLink to='/spots/new'>New</NavLink>
       </li>
     </ul>
   );

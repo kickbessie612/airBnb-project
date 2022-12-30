@@ -72,6 +72,7 @@ const SpotForm = ({ spot }) => {
 
       <input
         type='number'
+        step='0.0001'
         placeholder='Latitude'
         min='-90'
         max='90'
@@ -81,9 +82,10 @@ const SpotForm = ({ spot }) => {
       />
       <input
         type='number'
+        step='0.0001'
         placeholder='Longitude'
-        min='-90'
-        max='90'
+        min='-180'
+        max='180'
         required
         value={lng}
         onChange={e => setLng(e.target.value)}
@@ -110,7 +112,7 @@ const SpotForm = ({ spot }) => {
         value={price}
         onChange={e => setPrice(e.target.value)}
       />
-      <button>Create new Spot</button>
+      <button>{spot.id ? 'update' : 'create'}</button>
     </form>
   );
 };

@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import { fetchSpot } from '../../store/spots';
 
 const SpotShow = () => {
@@ -14,10 +14,6 @@ const SpotShow = () => {
 
   const spot = spotsObj[spotId];
 
-  const editSpot = e => {
-    e.preventDefault();
-  };
-
   if (!spot) {
     return null;
   }
@@ -29,11 +25,7 @@ const SpotShow = () => {
       <div>
         {spot.city}, {spot.state}, {spot.country}
       </div>
-      <button
-      // onClick={editSpot}
-      >
-        Edit
-      </button>
+      <Link to={`/spots/${spot.id}/edit`}>Edit</Link>
     </>
   );
 };

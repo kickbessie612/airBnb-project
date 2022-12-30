@@ -10,6 +10,7 @@ import Navigation from './components/Navigation';
 import SpotIndex from './components/spots/SpotIndex';
 import SpotShow from './components/spots/SpotShow';
 import CreateSpotForm from './components/spots/CreateSpotForm';
+import EditSpotForm from './components/spots/EditSpotForm';
 
 function App() {
   const dispatch = useDispatch();
@@ -35,8 +36,12 @@ function App() {
             <CreateSpotForm />
           </Route>
 
-          <Route path='/spots/:spotId'>
+          <Route exact path='/spots/:spotId'>
             <SpotShow />
+          </Route>
+
+          <Route path='/spots/:spotId/edit'>
+            <EditSpotForm />
           </Route>
         </Switch>
       )}

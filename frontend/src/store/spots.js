@@ -38,15 +38,15 @@ export const createSpot = spot => async dispatch => {
 };
 
 // PUT edit a spot
-export const updateSpot = spotId => async dispatch => {
-  const res = await csrfFetch(`/api/spots/${spotId}`, {
+export const updateSpot = spot => async dispatch => {
+  const res = await csrfFetch(`/api/spots/${spot.id}`, {
     method: 'PUT',
-    body: JSON.stringify(spotId)
+    body: JSON.stringify(spot)
   });
 
   const data = await res.json();
   dispatch(setSpots([data]));
-  return res;
+  return data;
 };
 
 const spotsReducer = (state = {}, action) => {
