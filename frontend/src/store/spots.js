@@ -33,6 +33,14 @@ export const fetchSpot = spotId => async dispatch => {
   return res;
 };
 
+// GET spots by current user
+export const fetchMySpots = () => async dispatch => {
+  const res = await csrfFetch('/api/me/spots');
+  const spots = await res.json();
+  dispatch(setSpots(spots));
+  return res;
+};
+
 // POST create a spot
 export const createSpot = spot => async dispatch => {
   const res = await csrfFetch('/api/spots', {

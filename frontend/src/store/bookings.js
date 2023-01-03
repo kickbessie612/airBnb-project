@@ -1,7 +1,7 @@
 import { csrfFetch } from './csrf';
 
 const SET_BOOKINGS = 'bookings/setBookings';
-// const REMOVE_BOOKINGS = 'bookings/removeBooking';
+// const REMOVE_BOOKING = 'bookings/removeBooking';
 
 export const setBookings = bookings => {
   return {
@@ -10,9 +10,9 @@ export const setBookings = bookings => {
   };
 };
 
-// GET all bookings
+// GET all Bookings for a Spot based on the Spot's id
 export const fetchBookings = () => async dispatch => {
-  const res = await csrfFetch('/api/bookings');
+  const res = await csrfFetch(`/api/spots/${spotId}/bookings`);
   const bookings = await res.json();
   dispatch(setBookings(bookings));
   return res;
