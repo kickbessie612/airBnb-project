@@ -12,7 +12,6 @@ const {
 } = require('../../db/models');
 
 // get the current user
-
 router.get('/', (req, res) => {
   const { user } = req;
   if (user) {

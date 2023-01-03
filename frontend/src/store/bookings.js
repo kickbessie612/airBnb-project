@@ -10,9 +10,9 @@ export const setBookings = bookings => {
   };
 };
 
-// GET all Bookings for a Spot based on the Spot's id
-export const fetchBookings = () => async dispatch => {
-  const res = await csrfFetch(`/api/spots/${spotId}/bookings`);
+// GET all Bookings of current user
+export const fetchMyBookings = () => async dispatch => {
+  const res = await csrfFetch(`/api/me/bookings`);
   const bookings = await res.json();
   dispatch(setBookings(bookings));
   return res;
@@ -21,6 +21,15 @@ export const fetchBookings = () => async dispatch => {
 const bookingsReducer = (state = {}, action) => {
   let newState = { ...state };
   switch (action.type) {
+    case SET_BOOKINGS:
+      const bookingsObj = {};
+
+      action.bookings.forEach(booking => {
+        bookingsObj[booking.id] = booking;
+      });
+      newState = { ...newState, ...bookingsObj };
+      return newState;
+
     default:
       return state;
   }

@@ -13,7 +13,7 @@ const MySpotIndex = () => {
     dispatch(fetchMySpots());
   }, [dispatch]);
 
-  if (spots.length === 0) {
+  if (mySpots.length === 0) {
     return null;
   }
 

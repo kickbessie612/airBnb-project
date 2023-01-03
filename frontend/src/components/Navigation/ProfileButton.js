@@ -39,8 +39,13 @@ function ProfileButton({ user }) {
         <ul className='profile-dropdown'>
           <li>{user.username}</li>
           <li>{user.email}</li>
-          <Link to='/me/spots'>My Spots</Link>
-          <li>My Bookings</li>
+          <li>
+            <Link to='/me/spots'>My Spots</Link>
+          </li>
+          <li>
+            <Link to='/me/bookings'>My Bookings</Link>
+          </li>
+
           <li>
             <button onClick={logout}>Log Out</button>
           </li>
