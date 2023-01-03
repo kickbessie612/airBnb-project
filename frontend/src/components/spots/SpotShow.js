@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams, Link, useHistory } from 'react-router-dom';
 import { fetchSpot, deleteSpot } from '../../store/spots';
+import BookingIndex from '../bookings/BookingIndex';
 
 const SpotShow = () => {
   const sessionUser = useSelector(state => state.session.user);
@@ -36,11 +37,16 @@ const SpotShow = () => {
         {spot.city}, {spot.state}, {spot.country}
       </div>
       {spot.ownerId === sessionUser.id && (
-        <div>
-          <Link to={`/spots/${spot.id}/edit`}>Edit</Link>
-          <button onClick={handleDelete}>Delete</button>
-        </div>
+        <>
+          <div>
+            <Link to={`/spots/${spot.id}/edit`}>Edit</Link>
+            <button onClick={handleDelete}>Delete</button>
+          </div>
+        </>
       )}
+      <div>
+        <BookingIndex spot={spot} />
+      </div>
     </>
   );
 };

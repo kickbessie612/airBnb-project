@@ -417,37 +417,25 @@ router.get('/:spotId/bookings', requireAuth, async (req, res, next) => {
     return next(new NotFoundError('Spot'));
   }
 
-  if (spot.ownerId !== req.user.id) {
-    const bookings = await Spot.findByPk(spotId, {
-      attributes: [],
-      include: [
-        { model: Booking, attributes: ['spotId', 'startDate', 'endDate'] }
-      ]
-    });
-    res.json(bookings);
-  } else {
-    const bookings = await Spot.findByPk(spotId, {
-      attributes: [],
-      include: [
-        {
-          model: Booking,
-          attributes: [
-            'id',
-            'spotId',
-            'userId',
-            'startDate',
-            'endDate',
-            'createdAt',
-            'updatedAt'
-          ],
-          include: [
-            { model: User, attributes: ['id', 'firstName', 'lastName'] }
-          ]
-        }
-      ]
-    });
-    res.json(bookings);
-  }
+  const bookings = await Spot.findByPk(spotId, {
+    attributes: [],
+    include: [
+      {
+        model: Booking,
+        attributes: [
+          'id',
+          'spotId',
+          'userId',
+          'startDate',
+          'endDate',
+          'createdAt',
+          'updatedAt'
+        ],
+        include: [{ model: User, attributes: ['id', 'firstName', 'lastName'] }]
+      }
+    ]
+  });
+  res.json(bookings);
 });
 
 //Create a Booking from a Spot based on the Spot's id

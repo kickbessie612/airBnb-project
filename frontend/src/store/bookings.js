@@ -10,11 +10,19 @@ export const setBookings = bookings => {
   };
 };
 
-// GET all Bookings of current user
+// GET all bookings of current user
 export const fetchMyBookings = () => async dispatch => {
   const res = await csrfFetch(`/api/me/bookings`);
   const bookings = await res.json();
   dispatch(setBookings(bookings));
+  return res;
+};
+
+// GET all bookings based on a spot id
+export const fetchBookings = spotId => async dispatch => {
+  const res = await csrfFetch(`/api/spots/${spotId}/bookings`);
+  const data = await res.json();
+  dispatch(setBookings(data.Bookings));
   return res;
 };
 

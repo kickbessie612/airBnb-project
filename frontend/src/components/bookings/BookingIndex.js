@@ -1,27 +1,26 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchMyBookings } from '../../store/bookings';
+import { fetchBookings } from '../../store/bookings';
 import BookingIndexItem from './BookingIndexItem';
 
-const BookingIndex = () => {
+const BookingIndex = ({ spot }) => {
   const dispatch = useDispatch();
-  const sessionUser = useSelector(state => state.session.user);
+
   const bookings = useSelector(state => Object.values(state.bookings));
-  const myBookings = bookings.filter(
-    booking => booking.userId === sessionUser.id
-  );
+
+  const spotBookings = bookings.filter(booking => booking.spotId === spot.id);
 
   useEffect(() => {
-    dispatch(fetchMyBookings());
+    dispatch(fetchBookings(spot.id));
   }, [dispatch]);
 
-  if (myBookings.length === 0) {
+  if (spotBookings.length === 0) {
     return null;
   }
 
   return (
     <div>
-      {myBookings.map(booking => (
+      {spotBookings.map(booking => (
         <BookingIndexItem booking={booking} key={booking.id} />
       ))}
     </div>
