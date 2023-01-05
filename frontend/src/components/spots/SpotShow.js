@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useParams, Link, useHistory } from 'react-router-dom';
 import { fetchSpot, deleteSpot } from '../../store/spots';
 import BookingIndex from '../bookings/BookingIndex';
+import CreateBookingForm from '../bookings/CreateBookingForm';
 
 const SpotShow = () => {
   const sessionUser = useSelector(state => state.session.user);
@@ -47,6 +48,14 @@ const SpotShow = () => {
       <div>
         <BookingIndex spot={spot} />
       </div>
+
+      {spot.ownerId !== sessionUser.id && (
+        <>
+          <div>
+            <CreateBookingForm spot={spot} />
+          </div>
+        </>
+      )}
     </>
   );
 };

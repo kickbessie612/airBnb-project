@@ -26,6 +26,18 @@ export const fetchBookings = spotId => async dispatch => {
   return res;
 };
 
+// POST create a booking
+export const createBooking = (booking, spotId) => async dispatch => {
+  const res = await csrfFetch(`/api/spots/${spotId}/bookings`, {
+    method: 'POST',
+    body: JSON.stringify(booking)
+  });
+
+  const data = await res.json();
+  dispatch(setBookings([data]));
+  return data;
+};
+
 const bookingsReducer = (state = {}, action) => {
   let newState = { ...state };
   switch (action.type) {
