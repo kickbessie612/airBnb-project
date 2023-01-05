@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 
-import { createBooking } from '../../store/bookings';
+import { createBooking, updateBooking } from '../../store/bookings';
 
 const BookingForm = ({ booking, spot }) => {
   const dispatch = useDispatch();
@@ -12,12 +12,11 @@ const BookingForm = ({ booking, spot }) => {
   const handleSubmit = async e => {
     e.preventDefault();
 
-    const payload = {
-      startDate,
-      endDate
-    };
+    const payload = { ...booking, startDate, endDate };
 
-    dispatch(createBooking(payload, spot.id));
+    const action = spot ? createBooking : updateBooking;
+    const spotId = spot ? spot.id : booking.spotId;
+    dispatch(action(payload, spotId));
   };
 
   return (
@@ -34,7 +33,7 @@ const BookingForm = ({ booking, spot }) => {
         value={endDate}
         onChange={e => setEndDate(e.target.value)}
       />
-      <button>Create</button>
+      <button>{booking.id ? 'update' : 'create'}</button>
     </form>
   );
 };

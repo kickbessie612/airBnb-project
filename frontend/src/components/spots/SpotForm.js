@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import { createSpot } from '../../store/spots';
+import { createSpot, updateSpot } from '../../store/spots';
 
 const SpotForm = ({ spot }) => {
   const history = useHistory();
@@ -33,7 +33,8 @@ const SpotForm = ({ spot }) => {
       price
     };
 
-    let newSpot = await dispatch(createSpot(payload));
+    const action = spot.id ? updateSpot : createSpot;
+    let newSpot = await dispatch(action(payload));
     if (newSpot) {
       history.push(`/spots/${newSpot.id}`);
     }

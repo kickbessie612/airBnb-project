@@ -129,7 +129,6 @@ router.get('/bookings', async (req, res, next) => {
           'lat',
           'lng',
           'name',
-
           'price',
           'previewImage'
         ]

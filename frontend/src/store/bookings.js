@@ -38,6 +38,20 @@ export const createBooking = (booking, spotId) => async dispatch => {
   return data;
 };
 
+//PUT edit a booking
+export const updateBooking = booking => async dispatch => {
+  const res = await csrfFetch(`/api/bookings/${booking.id}`, {
+    method: 'PUT',
+    body: JSON.stringify(booking)
+  });
+
+  const data = await res.json();
+  dispatch(setBookings([data]));
+  return data;
+};
+
+// DELETE delete a booking
+
 const bookingsReducer = (state = {}, action) => {
   let newState = { ...state };
   switch (action.type) {

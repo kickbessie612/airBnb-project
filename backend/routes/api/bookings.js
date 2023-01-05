@@ -26,7 +26,9 @@ router.put(
   [requireAuth, ...validateBooking],
   async (req, res, next) => {
     const { bookingId } = req.params;
-    const editBooking = await Booking.findByPk(bookingId);
+    const editBooking = await Booking.findByPk(bookingId, {
+      include: { model: Spot }
+    });
 
     if (!editBooking) {
       return next(new NotFoundError('Booking'));
@@ -51,6 +53,9 @@ router.put(
 
     const bookingConflicts = await Booking.findAll({
       where: {
+        id: {
+          [Op.not]: editBooking.id
+        },
         [Op.or]: [
           { startDate: { [Op.between]: [startDate, endDate] } },
           { endDate: { [Op.between]: [startDate, endDate] } }
@@ -68,6 +73,7 @@ router.put(
     }
 
     editBooking.update({ startDate, endDate });
+
     res.json(editBooking);
   }
 );

@@ -3,6 +3,7 @@ const BookingIndexItem = ({ booking }) => {
     <>
       <div>Start: {booking.startDate}</div>
       <div>End: {booking.endDate}</div>
+      <div>Delete</div>
     </>
   );
 };

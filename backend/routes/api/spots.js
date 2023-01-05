@@ -431,7 +431,25 @@ router.get('/:spotId/bookings', requireAuth, async (req, res, next) => {
           'createdAt',
           'updatedAt'
         ],
-        include: [{ model: User, attributes: ['id', 'firstName', 'lastName'] }]
+        include: [
+          { model: User, attributes: ['id', 'firstName', 'lastName'] },
+          {
+            model: Spot,
+            attributes: [
+              'id',
+              'ownerId',
+              'address',
+              'city',
+              'state',
+              'country',
+              'lat',
+              'lng',
+              'name',
+              'price',
+              'previewImage'
+            ]
+          }
+        ]
       }
     ]
   });
