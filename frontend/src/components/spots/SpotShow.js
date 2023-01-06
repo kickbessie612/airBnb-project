@@ -37,7 +37,7 @@ const SpotShow = () => {
       <div>
         {spot.city}, {spot.state}, {spot.country}
       </div>
-      {spot.ownerId === sessionUser.id && (
+      {sessionUser && spot.ownerId === sessionUser.id && (
         <>
           <div>
             <Link to={`/spots/${spot.id}/edit`}>Edit</Link>
@@ -49,7 +49,7 @@ const SpotShow = () => {
         <BookingIndex spot={spot} />
       </div>
 
-      {spot.ownerId !== sessionUser.id && (
+      {sessionUser && spot.ownerId !== sessionUser.id && (
         <>
           <div>
             <CreateBookingForm spot={spot} />

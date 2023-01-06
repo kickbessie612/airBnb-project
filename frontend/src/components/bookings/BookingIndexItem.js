@@ -14,7 +14,7 @@ const BookingIndexItem = ({ booking, spot }) => {
     <>
       <div>Start: {booking.startDate}</div>
       <div>End: {booking.endDate}</div>
-      {spot.ownerId === sessionUser.id && (
+      {sessionUser && spot.ownerId === sessionUser.id && (
         <>
           <div>
             <button onClick={handleDelete}>Delete</button>
