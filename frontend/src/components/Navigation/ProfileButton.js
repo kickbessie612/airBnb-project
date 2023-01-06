@@ -45,7 +45,9 @@ function ProfileButton({ user }) {
           <li>
             <Link to='/me/bookings'>My Bookings</Link>
           </li>
-
+          <li>
+            <Link to='/spots/new'>Start a new listing</Link>
+          </li>
           <li>
             <button onClick={logout}>Log Out</button>
           </li>
