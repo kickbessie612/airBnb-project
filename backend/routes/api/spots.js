@@ -499,7 +499,10 @@ router.post(
       startDate,
       endDate
     });
-    res.json(newBooking);
+    const newBookingData = await Booking.findByPk(newBooking.id, {
+      include: { model: Spot }
+    });
+    res.json(newBookingData);
   }
 );
 

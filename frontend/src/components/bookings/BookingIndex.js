@@ -21,7 +21,7 @@ const BookingIndex = ({ spot }) => {
   return (
     <div>
       {spotBookings.map(booking => (
-        <BookingIndexItem booking={booking} key={booking.id} />
+        <BookingIndexItem booking={booking} key={booking.id} spot={spot} />
       ))}
     </div>
   );
