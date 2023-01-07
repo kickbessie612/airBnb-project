@@ -5,39 +5,39 @@
 // NEW: add this code to each migration file
 let options = {};
 if (process.env.NODE_ENV === 'production') {
-  options.schema = process.env.SCHEMA;  // define your schema in options object
+  options.schema = process.env.SCHEMA; // define your schema in options object
 }
 // END of new code
 
 module.exports = {
   async up(queryInterface, Sequelize) {
-    options.tableName='SpotImages'
+    options.tableName = 'SpotImages';
     await queryInterface.bulkInsert(
       options,
       [
         {
           spotId: 1,
-          url: 'imgUrls11',
+          url: 'https://picsum.photos/400',
           preview: true
         },
         {
           spotId: 1,
-          url: 'imgUrls12',
+          url: 'https://picsum.photos/400',
           preview: false
         },
         {
           spotId: 2,
-          url: 'imgUrls2',
+          url: 'https://picsum.photos/400',
           preview: true
         },
         {
           spotId: 3,
-          url: 'imgUrls31',
+          url: 'https://picsum.photos/400',
           preview: true
         },
         {
           spotId: 3,
-          url: 'imgUrls32',
+          url: 'https://picsum.photos/400',
           preview: false
         }
       ],
@@ -46,7 +46,7 @@ module.exports = {
   },
 
   async down(queryInterface, Sequelize) {
-    options.tableName='SpotImages'
+    options.tableName = 'SpotImages';
     const Op = Sequelize.Op;
 
     await queryInterface.bulkDelete(

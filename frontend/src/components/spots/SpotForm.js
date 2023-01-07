@@ -16,6 +16,7 @@ const SpotForm = ({ spot }) => {
   const [name, setName] = useState(spot.name);
   const [description, setDescription] = useState(spot.description);
   const [price, setPrice] = useState(spot.price);
+  const [previewImage, setPreviewImage] = useState(spot.previewImage);
 
   const handleSubmit = async e => {
     e.preventDefault();
@@ -42,6 +43,13 @@ const SpotForm = ({ spot }) => {
 
   return (
     <form onSubmit={handleSubmit}>
+      <input
+        type='text'
+        placeholder='Preview Image Url'
+        required
+        value={previewImage}
+        onChange={e => setPreviewImage(e.target.value)}
+      />
       <input
         type='text'
         placeholder='Address'

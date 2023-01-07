@@ -33,6 +33,7 @@ const SpotShow = () => {
   return (
     <>
       <h1>{spot.name}</h1>
+      <img src={spot.previewImage} />
       <div>{spot.description}</div>
       <div>
         {spot.city}, {spot.state}, {spot.country}

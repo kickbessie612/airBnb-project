@@ -6,14 +6,15 @@
 // NEW: add this code to each migration file
 let options = {};
 if (process.env.NODE_ENV === 'production') {
-  options.schema = process.env.SCHEMA;  // define your schema in options object
+  options.schema = process.env.SCHEMA; // define your schema in options object
 }
 // END of new code
 
 module.exports = {
   async up(queryInterface, Sequelize) {
-    options.tableName='Spots';
-    await queryInterface.bulkInsert(options,
+    options.tableName = 'Spots';
+    await queryInterface.bulkInsert(
+      options,
 
       [
         {
@@ -27,7 +28,7 @@ module.exports = {
           name: 'Escape Paradise',
           description: 'This is a Escape Paradise',
           price: 326,
-          previewImage: 'imgUrls11'
+          previewImage: 'https://picsum.photos/400'
         },
         {
           ownerId: 2,
@@ -40,7 +41,7 @@ module.exports = {
           name: 'Hidden Gem',
           description: 'This is a Hidden Gem',
           price: 459,
-          previewImage: 'imgUrls2'
+          previewImage: 'https://picsum.photos/400'
         },
         {
           ownerId: 3,
@@ -53,7 +54,7 @@ module.exports = {
           name: 'Forrest Cabin',
           description: 'This is a Forrest Cabin',
           price: 617,
-          previewImage: 'imgUrls31'
+          previewImage: 'https://picsum.photos/400'
         }
       ],
       {}
@@ -62,9 +63,9 @@ module.exports = {
 
   async down(queryInterface, Sequelize) {
     const Op = Sequelize.Op;
-    options.tableName='Spots';
+    options.tableName = 'Spots';
     await queryInterface.bulkDelete(
-     options,
+      options,
       { name: { [Op.in]: ['Escape Paradise', 'Hidden Gem', 'Forrest Cabin'] } },
       {}
     );
