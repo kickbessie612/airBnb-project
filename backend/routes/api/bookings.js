@@ -43,7 +43,9 @@ router.put(
     const today = new Date();
 
     if (bookingEndDate < today) {
-      const err = new Error("Past bookings can't be modified");
+      const err = Error('Validation error');
+
+      err.errors = ["Past bookings can't be modified"];
 
       err.status = 403;
       return next(err);
@@ -64,9 +66,12 @@ router.put(
     });
 
     if (bookingConflicts.length) {
-      const err = new Error(
+      const err = Error('Validation error');
+
+      err.errors = [
         'Sorry, this spot is already booked for the specified dates'
-      );
+      ];
+
       err.status = 403;
 
       return next(err);

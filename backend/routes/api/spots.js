@@ -256,7 +256,37 @@ router.post('/', requireAuth, validateSpot, async (req, res) => {
     description,
     price
   });
-  res.status(201).json(newSpot);
+
+  const spot = await Spot.findByPk(newSpot.id, {
+    attributes: {
+      include: [
+        'id',
+        'ownerId',
+        'address',
+        'city',
+        'state',
+        'country',
+        'lat',
+        'lng',
+        'name',
+        'description',
+        'price',
+        'createdAt',
+        'updatedAt'
+      ]
+    },
+    include: [
+      {
+        model: SpotImage,
+        attributes: ['id', 'url', 'preview']
+      },
+      {
+        model: Review
+      },
+      { model: User, as: 'Owner', attributes: ['id', 'firstName', 'lastName'] }
+    ]
+  });
+  res.status(201).json(spot);
 });
 
 //Add an Image to a Spot based on the Spot's id
@@ -323,7 +353,40 @@ router.put(
       description,
       price
     });
-    res.json(editSpot);
+    const spot = await Spot.findByPk(editSpot.id, {
+      attributes: {
+        include: [
+          'id',
+          'ownerId',
+          'address',
+          'city',
+          'state',
+          'country',
+          'lat',
+          'lng',
+          'name',
+          'description',
+          'price',
+          'createdAt',
+          'updatedAt'
+        ]
+      },
+      include: [
+        {
+          model: SpotImage,
+          attributes: ['id', 'url', 'preview']
+        },
+        {
+          model: Review
+        },
+        {
+          model: User,
+          as: 'Owner',
+          attributes: ['id', 'firstName', 'lastName']
+        }
+      ]
+    });
+    res.json(spot);
   }
 );
 
@@ -485,9 +548,12 @@ router.post(
     });
 
     if (bookingConflicts.length) {
-      const err = new Error(
+      const err = Error('Validation error');
+
+      err.errors = [
         'Sorry, this spot is already booked for the specified dates'
-      );
+      ];
+
       err.status = 403;
 
       return next(err);

@@ -17,9 +17,11 @@ const SpotForm = ({ spot }) => {
   const [description, setDescription] = useState(spot.description);
   const [price, setPrice] = useState(spot.price);
   const [previewImage, setPreviewImage] = useState(spot.previewImage);
+  const [errors, setErrors] = useState([]);
 
-  const handleSubmit = async e => {
+  const handleSubmit = e => {
     e.preventDefault();
+    setErrors([]);
 
     const payload = {
       ...spot,
@@ -35,14 +37,22 @@ const SpotForm = ({ spot }) => {
     };
 
     const action = spot.id ? updateSpot : createSpot;
-    let newSpot = await dispatch(action(payload));
-    if (newSpot) {
-      history.push(`/spots/${newSpot.id}`);
-    }
+
+    dispatch(action(payload))
+      .then(newSpot => history.push(`/spots/${newSpot.id}`))
+      .catch(async res => {
+        const data = await res.json();
+        if (data && data.errors) setErrors(data.errors);
+      });
   };
 
   return (
     <form onSubmit={handleSubmit}>
+      <ul>
+        {errors.map((error, idx) => (
+          <li key={idx}>{error}</li>
+        ))}
+      </ul>
       <input
         type='text'
         placeholder='Preview Image Url'

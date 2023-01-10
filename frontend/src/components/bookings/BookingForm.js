@@ -8,19 +8,29 @@ const BookingForm = ({ booking, spot }) => {
 
   const [startDate, setStartDate] = useState(booking.startDate);
   const [endDate, setEndDate] = useState(booking.endDate);
+  const [errors, setErrors] = useState([]);
 
-  const handleSubmit = async e => {
+  const handleSubmit = e => {
     e.preventDefault();
+    setErrors([]);
 
     const payload = { ...booking, startDate, endDate };
 
     const action = spot ? createBooking : updateBooking;
     const spotId = spot ? spot.id : booking.spotId;
-    dispatch(action(payload, spotId));
+    dispatch(action(payload, spotId)).catch(async res => {
+      const data = await res.json();
+      if (data && data.errors) setErrors(data.errors);
+    });
   };
 
   return (
     <form onSubmit={handleSubmit}>
+      <ul>
+        {errors.map((error, idx) => (
+          <li key={idx}>{error}</li>
+        ))}
+      </ul>
       <input
         type='date'
         required
