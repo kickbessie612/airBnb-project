@@ -28,7 +28,7 @@ module.exports = {
           name: 'Escape Paradise',
           description: 'This is a Escape Paradise',
           price: 326,
-          previewImage: 'https://picsum.photos/400'
+          previewImage: 'https://picsum.photos/id/428/400'
         },
         {
           ownerId: 2,
@@ -41,7 +41,7 @@ module.exports = {
           name: 'Hidden Gem',
           description: 'This is a Hidden Gem',
           price: 459,
-          previewImage: 'https://picsum.photos/400'
+          previewImage: 'https://picsum.photos/id/236/400'
         },
         {
           ownerId: 3,
@@ -54,7 +54,7 @@ module.exports = {
           name: 'Forrest Cabin',
           description: 'This is a Forrest Cabin',
           price: 617,
-          previewImage: 'https://picsum.photos/400'
+          previewImage: 'https://picsum.photos/id/308/400'
         }
       ],
       {}

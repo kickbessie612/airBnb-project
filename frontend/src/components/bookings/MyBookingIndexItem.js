@@ -9,6 +9,7 @@ const MyBookingIndexItem = ({ booking }) => {
 
   const handleDelete = async e => {
     e.preventDefault();
+    if (!window.confirm('Do you want to delete this booking?')) return;
     await dispatch(deleteBooking(booking.id));
   };
 

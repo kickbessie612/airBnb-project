@@ -22,6 +22,7 @@ const SpotShow = () => {
 
   const handleDelete = async e => {
     e.preventDefault();
+    if (!window.confirm('Do you want to delete this spot?')) return;
     await dispatch(deleteSpot(spotId));
     history.push('/');
   };
@@ -33,7 +34,9 @@ const SpotShow = () => {
   return (
     <>
       <h1>{spot.name}</h1>
-      <img src={spot.previewImage} />
+      {spot.SpotImages.map(image => (
+        <img src={image.url} key={image.id} />
+      ))}
       <div>{spot.description}</div>
       <div>
         {spot.city}, {spot.state}, {spot.country}
@@ -49,7 +52,6 @@ const SpotShow = () => {
       <div>
         <BookingIndex spot={spot} />
       </div>
-
       {sessionUser && spot.ownerId !== sessionUser.id && (
         <>
           <div>
