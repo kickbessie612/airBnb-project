@@ -10,12 +10,15 @@ h1 > span {
   color: #6fa0bb;
 }
 
-h2 {
+.subtitle-container {
   display: flex;
   justify-content: center;
+  margin-top: 20px;
+}
+
+h2 {
   font-size: 30px;
   font-weight: 400;
-  margin-top: 20px;
 }
 
 .spot-index {

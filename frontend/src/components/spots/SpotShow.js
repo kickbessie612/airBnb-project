@@ -6,6 +6,8 @@ import { fetchSpot, deleteSpot } from '../../store/spots';
 import BookingIndex from '../bookings/BookingIndex';
 import CreateBookingForm from '../bookings/CreateBookingForm';
 
+import './SpotShow.css';
+
 const SpotShow = () => {
   const sessionUser = useSelector(state => state.session.user);
 
@@ -33,10 +35,16 @@ const SpotShow = () => {
 
   return (
     <>
-      <h1>{spot.name}</h1>
-      {spot.SpotImages.map(image => (
-        <img src={image.url} key={image.id} />
-      ))}
+      <h1>
+        A place to&nbsp;<span>stay</span>
+      </h1>
+      <div className='spot-img-container'>
+        {spot.SpotImages.map(image => (
+          <img src={image.url} key={image.id} />
+        ))}
+      </div>
+
+      <h2 className='spot-name-detail-page'>{spot.name}</h2>
       <div>{spot.description}</div>
       <div>
         {spot.city}, {spot.state}, {spot.country}

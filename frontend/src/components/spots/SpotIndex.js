@@ -21,7 +21,9 @@ const SpotIndex = () => {
       <h1>
         Find&nbsp;<span>unique</span>&nbsp;homes
       </h1>
-      <h2>Book your next adventure now</h2>
+      <div className='subtitle-container'>
+        <h2>Book your next adventure now</h2>
+      </div>
       <div className='spot-index'>
         {spots.map(spot => (
           <SpotIndexItem spot={spot} key={spot.id} />
