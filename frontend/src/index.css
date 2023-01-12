@@ -11,7 +11,9 @@
 html {
   background-color: #e8e9eb;
   font-size: 14px;
-  /* background-image: url('./background.jpg'); */
+  background-image: url('./bgimg.jpg');
+
+  background-repeat: repeat-x;
 }
 
 /* font-family: 'Montserrat', sans-serif; */
@@ -36,4 +38,9 @@ button.blue {
   background-color: #4aa2cf;
   color: #e8e9eb;
   border-color: #4aa2cf;
+}
+
+.main-content {
+  width: 1200px;
+  margin: 0 auto;
 }

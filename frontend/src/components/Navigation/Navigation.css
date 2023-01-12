@@ -7,13 +7,14 @@
   /* background-color: #db6263; */
   margin-top: 50px;
   margin-bottom: 50px;
+  /* background-image: url('./background01.jpg'); */
 }
 
 .navbar > img {
   height: 30px;
 }
 
-.navlinks {
+.nav-links {
   width: 300px;
   display: flex;
   justify-content: flex-end;
@@ -21,7 +22,7 @@
   align-items: center;
 }
 
-.navlinks > *:not(:first-child) {
+.nav-links > *:not(:first-child) {
   margin-left: 10px;
 }
 
@@ -40,6 +41,7 @@ a {
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   border-radius: 5px;
   padding: 10px;
+  background-color: #e8e9eb;
 }
 
 .profile-dropdown > *:not(:first-child) {

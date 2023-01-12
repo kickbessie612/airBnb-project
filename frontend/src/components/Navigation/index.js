@@ -41,8 +41,10 @@ function Navigation({ isLoaded }) {
 
   return (
     <div className='navbar'>
-      <img src={image} />
-      <div className='navlinks'>
+      <Link to='/'>
+        <img src={image} />
+      </Link>
+      <div className='nav-links'>
         <NavLink exact to='/'>
           Home
         </NavLink>

@@ -24,37 +24,39 @@ function App() {
   return (
     <>
       <Navigation isLoaded={isLoaded} />
-      {isLoaded && (
-        <Switch>
-          <Route path='/signup'>
-            <SignupFormPage />
-          </Route>
+      <div className='main-content'>
+        {isLoaded && (
+          <Switch>
+            <Route path='/signup'>
+              <SignupFormPage />
+            </Route>
 
-          <Route exact path='/'>
-            <SpotIndex />
-          </Route>
+            <Route exact path='/'>
+              <SpotIndex />
+            </Route>
 
-          <Route path='/spots/new'>
-            <CreateSpotForm />
-          </Route>
+            <Route path='/spots/new'>
+              <CreateSpotForm />
+            </Route>
 
-          <Route exact path='/spots/:spotId'>
-            <SpotShow />
-          </Route>
+            <Route exact path='/spots/:spotId'>
+              <SpotShow />
+            </Route>
 
-          <Route path='/spots/:spotId/edit'>
-            <EditSpotForm />
-          </Route>
+            <Route path='/spots/:spotId/edit'>
+              <EditSpotForm />
+            </Route>
 
-          <Route path='/me/spots'>
-            <MySpotIndex />
-          </Route>
+            <Route path='/me/spots'>
+              <MySpotIndex />
+            </Route>
 
-          <Route path='/me/bookings'>
-            <MyBookingIndex />
-          </Route>
-        </Switch>
-      )}
+            <Route path='/me/bookings'>
+              <MyBookingIndex />
+            </Route>
+          </Switch>
+        )}
+      </div>
     </>
   );
 }

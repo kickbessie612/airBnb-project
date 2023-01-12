@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchSpots } from '../../store/spots';
 import SpotIndexItem from './SpotIndexItem';
-import './spots.css';
+import './SpotIndex.css';
 
 const SpotIndex = () => {
   const dispatch = useDispatch();
@@ -17,11 +17,17 @@ const SpotIndex = () => {
   }
 
   return (
-    <div>
-      {spots.map(spot => (
-        <SpotIndexItem spot={spot} key={spot.id} />
-      ))}
-    </div>
+    <>
+      <h1>
+        Find&nbsp;<span>unique</span>&nbsp;homes
+      </h1>
+      <h2>Book your next adventure now</h2>
+      <div className='spot-index'>
+        {spots.map(spot => (
+          <SpotIndexItem spot={spot} key={spot.id} />
+        ))}
+      </div>
+    </>
   );
 };
 
