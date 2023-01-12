@@ -1,11 +1,12 @@
 // frontend/src/components/Navigation/index.js
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import ProfileButton from './ProfileButton';
 import LoginForm from '../LoginForm';
 import * as sessionActions from '../../store/session';
 import './Navigation.css';
+import image from './logo.png';
 
 function Navigation({ isLoaded }) {
   const dispatch = useDispatch();
@@ -28,21 +29,26 @@ function Navigation({ isLoaded }) {
     sessionLinks = (
       <>
         <LoginForm />
-        <NavLink to='/signup'>Sign Up</NavLink>
-        <button onClick={loginDemo}>Demo User</button>
+        <Link className='button blue' to='/signup'>
+          Sign Up
+        </Link>
+        <button className='blue' onClick={loginDemo}>
+          Demo User
+        </button>
       </>
     );
   }
 
   return (
-    <ul>
-      <li>
+    <div className='navbar'>
+      <img src={image} />
+      <div className='navlinks'>
         <NavLink exact to='/'>
           Home
         </NavLink>
         {isLoaded && sessionLinks}
-      </li>
-    </ul>
+      </div>
+    </div>
   );
 }
 

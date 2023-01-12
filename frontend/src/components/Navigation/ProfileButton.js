@@ -33,25 +33,28 @@ function ProfileButton({ user }) {
   return (
     <>
       <button onClick={openMenu}>
-        <i className='fas fa-user-circle' />
+        <i className='fas fa-bars' />
       </button>
       {showMenu && (
-        <ul className='profile-dropdown'>
-          <li>{user.username}</li>
-          <li>{user.email}</li>
-          <li>
+        <div className='profile-dropdown'>
+          <div>{user.username}</div>
+          <div>{user.email}</div>
+          <hr />
+          <div>
             <Link to='/me/spots'>My Spots</Link>
-          </li>
-          <li>
+          </div>
+          <div>
             <Link to='/me/bookings'>My Bookings</Link>
-          </li>
-          <li>
+          </div>
+          <div>
             <Link to='/spots/new'>Start a new listing</Link>
-          </li>
-          <li>
+          </div>
+          <hr />
+
+          <div>
             <button onClick={logout}>Log Out</button>
-          </li>
-        </ul>
+          </div>
+        </div>
       )}
     </>
   );
