@@ -44,7 +44,6 @@ function SignupFormPage() {
   return (
     <div>
       <h1 className='introduction'>
-        {' '}
         Start your&nbsp;<span>own</span>&nbsp;experience
       </h1>
       <div className='subtitle-container'>
