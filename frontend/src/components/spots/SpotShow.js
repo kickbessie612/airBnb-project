@@ -62,9 +62,12 @@ const SpotShow = () => {
       )}
       <hr />
 
-      <div>
-        <BookingIndex spot={spot} />
-      </div>
+      {sessionUser && (
+        <div>
+          <BookingIndex spot={spot} />
+        </div>
+      )}
+
       {sessionUser && spot.ownerId !== sessionUser.id && (
         <>
           <div>
