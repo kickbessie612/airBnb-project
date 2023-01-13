@@ -18,7 +18,7 @@ const SpotIndex = () => {
 
   return (
     <>
-      <h1>
+      <h1 className='introduction'>
         Find&nbsp;<span>unique</span>&nbsp;homes
       </h1>
       <div className='subtitle-container'>
