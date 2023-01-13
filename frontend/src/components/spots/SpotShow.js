@@ -38,17 +38,20 @@ const SpotShow = () => {
       <h1>
         A place to&nbsp;<span>stay</span>
       </h1>
+      <h2 className='spot-name-detail-page'>{spot.name}</h2>
+      <div className='spot-location'>
+        {spot.city}, {spot.state}, {spot.country}
+      </div>
       <div className='spot-img-container'>
         {spot.SpotImages.map(image => (
           <img src={image.url} key={image.id} />
         ))}
       </div>
+      <div className='spot-host'>Hosted by {spot.Owner.firstName}</div>
+      <hr />
 
-      <h2 className='spot-name-detail-page'>{spot.name}</h2>
-      <div>{spot.description}</div>
-      <div>
-        {spot.city}, {spot.state}, {spot.country}
-      </div>
+      <div className='spot-description'>{spot.description}</div>
+
       {sessionUser && spot.ownerId === sessionUser.id && (
         <>
           <div>
@@ -57,6 +60,8 @@ const SpotShow = () => {
           </div>
         </>
       )}
+      <hr />
+
       <div>
         <BookingIndex spot={spot} />
       </div>

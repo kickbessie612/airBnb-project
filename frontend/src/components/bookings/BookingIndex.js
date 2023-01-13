@@ -19,11 +19,14 @@ const BookingIndex = ({ spot }) => {
   }
 
   return (
-    <div>
-      {spotBookings.map(booking => (
-        <BookingIndexItem booking={booking} key={booking.id} spot={spot} />
-      ))}
-    </div>
+    <>
+      <div className='spot-booking-title'>Current Bookings</div>
+      <div>
+        {spotBookings.map(booking => (
+          <BookingIndexItem booking={booking} key={booking.id} spot={spot} />
+        ))}
+      </div>
+    </>
   );
 };
 

@@ -1,10 +1,31 @@
-.spot-img-container {
-  background-color: aquamarine;
-  border-radius: 25px;
-  margin-top: 110px;
+.spot-name-detail-page {
+  margin-top: 120px;
+  font-size: 26px;
+  font-weight: 500;
 }
 
-.spot-name-detail-page {
-  /* display: flex;
-  justify-content: left; */
+.spot-location {
+  margin-top: 10px;
+}
+
+.spot-img-container {
+  border-radius: 25px;
+  border: solid 1px #cdcdcd;
+  margin-top: 30px;
+  display: inline-flex;
+
+  overflow: hidden;
+}
+
+.spot-img-container > img:not(:first-child) {
+  margin-left: 5px;
+}
+
+.spot-host {
+  margin-top: 30px;
+  font-weight: 500;
+}
+
+.spot-booking-title {
+  font-weight: 500;
 }
