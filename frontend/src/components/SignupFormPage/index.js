@@ -42,68 +42,74 @@ function SignupFormPage() {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <ul>
-        {errors.map((error, idx) => (
-          <li key={idx}>{error}</li>
-        ))}
-      </ul>
-      <label>
-        Email
+    <div>
+      <h1 className='introduction'>
+        {' '}
+        Start your&nbsp;<span>own</span>&nbsp;experience
+      </h1>
+      <div className='subtitle-container'>
+        <h2>Welcome to Unique Homes</h2>
+      </div>
+      <form className='sign-up-form' onSubmit={handleSubmit}>
+        <ul>
+          {errors.map((error, idx) => (
+            <li key={idx}>{error}</li>
+          ))}
+        </ul>
+
         <input
           type='text'
           value={email}
+          placeholder='Email'
           onChange={e => setEmail(e.target.value)}
           required
         />
-      </label>
-      <label>
-        First Name
+
         <input
           type='text'
           value={firstName}
+          placeholder='First Name'
           onChange={e => setFirstName(e.target.value)}
           required
         />
-      </label>
-      <label>
-        Last name
+
         <input
           type='text'
           value={lastName}
+          placeholder='Last name'
           onChange={e => setLastName(e.target.value)}
           required
         />
-      </label>
-      <label>
-        Username
+
         <input
           type='text'
           value={username}
+          placeholder='Username'
           onChange={e => setUsername(e.target.value)}
           required
         />
-      </label>
-      <label>
-        Password
+
         <input
           type='password'
           value={password}
+          placeholder='Password'
           onChange={e => setPassword(e.target.value)}
           required
         />
-      </label>
-      <label>
-        Confirm Password
+
         <input
           type='password'
           value={confirmPassword}
+          placeholder='Confirm Password'
           onChange={e => setConfirmPassword(e.target.value)}
           required
         />
-      </label>
-      <button type='submit'>Sign Up</button>
-    </form>
+
+        <button className='blue' type='submit'>
+          Sign Up
+        </button>
+      </form>
+    </div>
   );
 }
 

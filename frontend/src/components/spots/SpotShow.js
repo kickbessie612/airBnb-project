@@ -35,7 +35,7 @@ const SpotShow = () => {
 
   return (
     <>
-      <h1>
+      <h1 className='introduction'>
         A place to&nbsp;<span>stay</span>
       </h1>
       <h2 className='spot-name-detail-page'>{spot.name}</h2>
