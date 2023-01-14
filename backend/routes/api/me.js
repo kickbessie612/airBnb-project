@@ -51,7 +51,8 @@ router.get('/spots', async (req, res) => {
         required: false,
         attributes: ['url', 'preview'],
         where: { preview: true }
-      }
+      },
+      { model: User, as: 'Owner', attributes: ['id', 'firstName', 'lastName'] }
       // ,
       // { model: Review, attributes: [] }
     ]
