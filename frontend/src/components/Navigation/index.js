@@ -14,7 +14,7 @@ function Navigation({ isLoaded }) {
 
   const loginDemo = () => {
     dispatch(
-      sessionActions.loginUser({ credential: 'TenRings', password: 'password' })
+      sessionActions.loginUser({ credential: 'yuyuani', password: 'password' })
     );
   };
 

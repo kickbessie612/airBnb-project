@@ -17,12 +17,17 @@ module.exports = {
       [
         {
           spotId: 1,
-          url: 'https://picsum.photos/id/428/400',
+          url: 'https://picsum.photos/id/49/400',
           preview: true
         },
         {
           spotId: 1,
           url: 'https://picsum.photos/id/594/400',
+          preview: false
+        },
+        {
+          spotId: 1,
+          url: 'https://picsum.photos/id/15/400',
           preview: false
         },
         {

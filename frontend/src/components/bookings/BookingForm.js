@@ -3,6 +3,8 @@ import { useDispatch } from 'react-redux';
 
 import { createBooking, updateBooking } from '../../store/bookings';
 
+import './BookingForm.css';
+
 const BookingForm = ({ booking, spot }) => {
   const dispatch = useDispatch();
 
@@ -25,7 +27,7 @@ const BookingForm = ({ booking, spot }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form className='booking-form' onSubmit={handleSubmit}>
       <ul>
         {errors.map((error, idx) => (
           <li key={idx}>{error}</li>

@@ -20,11 +20,15 @@ const MySpotIndex = () => {
 
   return (
     <>
-      <h1 className='introduction'>My Spots</h1>
+      <h1 className='introduction'>
+        {' '}
+        Welcome,&nbsp;
+        <span>{sessionUser.firstName}</span>&nbsp;!
+      </h1>
       <div className='subtitle-container'>
         <h2>Managing my listing</h2>
       </div>
-      <div>
+      <div className='spot-index'>
         {mySpots.map(spot => (
           <SpotIndexItem spot={spot} key={spot.id} />
         ))}

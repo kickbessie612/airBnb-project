@@ -8,24 +8,24 @@ const bcrypt = require('bcryptjs');
 // NEW: add this code to each migration file
 let options = {};
 if (process.env.NODE_ENV === 'production') {
-  options.schema = process.env.SCHEMA;  // define your schema in options object
+  options.schema = process.env.SCHEMA; // define your schema in options object
 }
 // END of new code
 
 // add options object to up and down functions:
 module.exports = {
   async up(queryInterface, Sequelize) {
-options.tableName='Users';
+    options.tableName = 'Users';
 
-
-    await queryInterface.bulkInsert(options,
+    await queryInterface.bulkInsert(
+      options,
 
       [
         {
-          firstName: 'Shang',
-          lastName: 'Chi',
+          firstName: 'Yuan',
+          lastName: 'Wang',
           email: 'user1@user.io',
-          username: 'TenRings',
+          username: 'yuyuani',
           hashedPassword: bcrypt.hashSync('password')
         },
         {
@@ -48,10 +48,11 @@ options.tableName='Users';
   },
 
   async down(queryInterface, Sequelize) {
-    options.tableName='Users';
+    options.tableName = 'Users';
     const Op = Sequelize.Op;
 
-    await queryInterface.bulkDelete(options,
+    await queryInterface.bulkDelete(
+      options,
 
       { username: { [Op.in]: ['TenRings', 'GodOfMischief', 'BlackWidow'] } },
       {}

@@ -28,7 +28,7 @@ module.exports = {
           name: 'Escape Paradise',
           description: 'This is a Escape Paradise',
           price: 326,
-          previewImage: 'https://picsum.photos/id/428/400'
+          previewImage: 'https://picsum.photos/id/49/400'
         },
         {
           ownerId: 2,

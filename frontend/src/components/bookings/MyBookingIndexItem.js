@@ -16,8 +16,8 @@ const MyBookingIndexItem = ({ booking }) => {
   return (
     <>
       <Link to={`/spots/${booking.spotId}`}>
-        <div>{booking.Spot.name}</div>
-        <div>
+        <div className='spot-name'>{booking.Spot.name}</div>
+        <div className='spot-location'>
           {booking.Spot.city}, {booking.Spot.country}
         </div>
       </Link>
