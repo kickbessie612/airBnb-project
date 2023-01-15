@@ -33,7 +33,8 @@ const SpotForm = ({ spot }) => {
       lng,
       name,
       description,
-      price
+      price,
+      previewImage
     };
 
     const action = spot.id ? updateSpot : createSpot;
