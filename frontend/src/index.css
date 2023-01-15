@@ -9,6 +9,7 @@
 }
 
 html {
+  height: 100%;
   background-color: #e8e9eb;
   font-size: 14px;
   background-image: url('./bgimg.jpg');
@@ -16,7 +17,9 @@ html {
   background-repeat: repeat-x;
 }
 
-/* font-family: 'Montserrat', sans-serif; */
+body {
+  height: 100%;
+}
 
 a {
   text-decoration: none;
@@ -39,9 +42,16 @@ button.blue {
   border-color: #4aa2cf;
 }
 
+#root {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .main-content {
+  flex: 1;
   width: 1200px;
-  margin: 0 auto;
   margin-bottom: 20px;
 }
 
@@ -62,8 +72,4 @@ input[type='number'] {
   box-sizing: border-box;
   width: 100%;
   outline: none;
-}
-
-.footer {
-  text-align: center;
 }
