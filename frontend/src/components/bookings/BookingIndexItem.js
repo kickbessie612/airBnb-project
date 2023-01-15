@@ -13,8 +13,9 @@ const BookingIndexItem = ({ booking, spot }) => {
 
   return (
     <>
-      <div>Start: {booking.startDate}</div>
-      <div>End: {booking.endDate}</div>
+      <div>
+        {booking.startDate} to {booking.endDate}
+      </div>
       {sessionUser && spot.ownerId === sessionUser.id && (
         <>
           <div>

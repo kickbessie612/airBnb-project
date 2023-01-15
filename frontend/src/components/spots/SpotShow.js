@@ -43,6 +43,7 @@ const SpotShow = () => {
         {spot.city}, {spot.state}, {spot.country}
       </div>
       <div className='spot-img-container'>
+        <img src={spot.previewImage} />
         {spot.SpotImages.map(image => (
           <img src={image.url} key={image.id} />
         ))}
@@ -51,7 +52,7 @@ const SpotShow = () => {
       <hr />
 
       <div className='spot-description'>{spot.description}</div>
-
+      <div className='spot-description'>${spot.price} per night</div>
       {sessionUser && spot.ownerId === sessionUser.id && (
         <>
           <div>
@@ -70,6 +71,7 @@ const SpotShow = () => {
 
       {sessionUser && spot.ownerId !== sessionUser.id && (
         <>
+          <div className='spot-create-booking'>Create a new booking</div>
           <div>
             <CreateBookingForm spot={spot} />
           </div>

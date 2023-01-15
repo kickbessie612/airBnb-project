@@ -25,11 +25,7 @@ module.exports = {
           url: 'https://picsum.photos/id/594/400',
           preview: false
         },
-        {
-          spotId: 1,
-          url: 'https://picsum.photos/id/15/400',
-          preview: false
-        },
+
         {
           spotId: 2,
           url: 'https://picsum.photos/id/101/400',

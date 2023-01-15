@@ -1,7 +1,16 @@
-.booking-form > input {
-  width: 50%;
+.date-input-container > input {
+  width: 400px;
+  height: 36px;
 }
 
 .booking-form > button {
-  width: 50%;
+  width: 70px;
+}
+
+.date-input-container {
+  display: flex;
+}
+
+.date-input-container > input:not(:first-child) {
+  margin-left: 5px;
 }

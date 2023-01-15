@@ -33,19 +33,27 @@ const BookingForm = ({ booking, spot }) => {
           <li key={idx}>{error}</li>
         ))}
       </ul>
-      <input
-        type='date'
-        required
-        value={startDate}
-        onChange={e => setStartDate(e.target.value)}
-      />
-      <input
-        type='date'
-        required
-        value={endDate}
-        onChange={e => setEndDate(e.target.value)}
-      />
-      <button>{booking.id ? 'update' : 'create'}</button>
+      <div className='date-input-container'>
+        <input
+          onFocus={e => (e.target.type = 'date')}
+          onBlur={e => (e.target.type = 'text')}
+          type='text'
+          required
+          value={startDate}
+          placeholder='Start Date'
+          onChange={e => setStartDate(e.target.value)}
+        />
+        <input
+          onFocus={e => (e.target.type = 'date')}
+          onBlur={e => (e.target.type = 'text')}
+          type='text'
+          required
+          value={endDate}
+          placeholder='End Date'
+          onChange={e => setEndDate(e.target.value)}
+        />
+      </div>
+      <button>{booking.id ? 'Update' : 'Create'}</button>
     </form>
   );
 };

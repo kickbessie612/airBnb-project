@@ -22,7 +22,9 @@ const MyBookingIndexItem = ({ booking }) => {
         </div>
       </Link>
       <EditBookingForm booking={booking} />
-      <button onClick={handleDelete}>Delete</button>
+      <button className='delete-booking-button' onClick={handleDelete}>
+        Delete
+      </button>
     </>
   );
 };

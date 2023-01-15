@@ -20,12 +20,14 @@ const BookingIndex = ({ spot }) => {
 
   return (
     <>
-      <div className='spot-booking-title'>Current Bookings</div>
-      <div>
+      <div className='spot-booking-title'>Current Bookings:</div>
+      <ul>
         {spotBookings.map(booking => (
-          <BookingIndexItem booking={booking} key={booking.id} spot={spot} />
+          <li>
+            <BookingIndexItem booking={booking} key={booking.id} spot={spot} />
+          </li>
         ))}
-      </div>
+      </ul>
     </>
   );
 };
