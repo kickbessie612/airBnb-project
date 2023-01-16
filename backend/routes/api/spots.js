@@ -554,6 +554,7 @@ router.post(
     //booking conflict error
     const bookingConflicts = await Booking.findAll({
       where: {
+        spotId: spot.id,
         [Op.or]: [
           { startDate: { [Op.between]: [startDate, endDate] } },
           { endDate: { [Op.between]: [startDate, endDate] } }
