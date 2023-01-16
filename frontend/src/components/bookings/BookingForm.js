@@ -1,7 +1,11 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 
-import { createBooking, updateBooking } from '../../store/bookings';
+import {
+  createBooking,
+  updateBooking,
+  deleteBooking
+} from '../../store/bookings';
 
 import './BookingForm.css';
 
@@ -21,6 +25,18 @@ const BookingForm = ({ booking, spot }) => {
     const action = spot ? createBooking : updateBooking;
     const spotId = spot ? spot.id : booking.spotId;
     dispatch(action(payload, spotId)).catch(async res => {
+      const data = await res.json();
+      if (data && data.errors) setErrors(data.errors);
+    });
+  };
+
+  const handleDelete = e => {
+    e.preventDefault();
+    setErrors([]);
+
+    if (!window.confirm('Do you want to delete this booking?')) return;
+
+    dispatch(deleteBooking(booking.id)).catch(async res => {
       const data = await res.json();
       if (data && data.errors) setErrors(data.errors);
     });
@@ -53,7 +69,15 @@ const BookingForm = ({ booking, spot }) => {
           onChange={e => setEndDate(e.target.value)}
         />
       </div>
-      <button>{booking.id ? 'Update' : 'Create'}</button>
+      <div>
+        <button>{booking.id ? 'Update' : 'Create'}</button>
+
+        {booking.id && (
+          <button className='delete-booking-button' onClick={handleDelete}>
+            Delete
+          </button>
+        )}
+      </div>
     </form>
   );
 };
