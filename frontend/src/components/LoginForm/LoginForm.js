@@ -22,13 +22,12 @@ function LoginForm() {
 
   return (
     <div className='login-form'>
-      <form onSubmit={handleSubmit}>
-        {/* <ul>
+      <ul>
         {errors.map((error, idx) => (
           <li key={idx}>{error}</li>
         ))}
-      </ul> */}
-
+      </ul>
+      <form onSubmit={handleSubmit}>
         <input
           type='text'
           placeholder='username'
